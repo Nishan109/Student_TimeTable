@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7th Semester Timetable — GZSCCET Bathinda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12213F;
+    --ink-2:#1B2E52;
+    --paper:#FAF6EC;
+    --paper-2:#F1EBDA;
+    --line: #E4DCC6;
+    --line-dark: rgba(255,255,255,0.14);
+    --gold:#C89A3A;
+    --gold-soft:#E9CE8E;
+    --teal:#2F8F7F;
+    --teal-soft:#BFE3DA;
+    --ink-text:#20263A;
+    --muted:#6B7280;
+    --free:#EFEAE0;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--ink-text);
+    font-family:'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .serif{font-family:'Fraunces', serif;}
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    position:relative;
+    background:
+      radial-gradient(1200px 420px at 12% -10%, rgba(200,154,58,0.18), transparent 60%),
+      radial-gradient(900px 380px at 92% 0%, rgba(47,143,127,0.16), transparent 55%),
+      linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
+    color:#F4EFE0;
+    padding:56px 6vw 40px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line-dark);
+  }
+  .brand-block{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    margin-bottom:24px;
+    cursor:pointer;
+    transition:opacity .15s ease, transform .15s ease;
+  }
+  .brand-block:hover{opacity:.85; transform:translateY(-1px);}
+  .brand-block:focus-visible{outline:2px solid var(--gold-soft); outline-offset:4px; border-radius:6px;}
+  .brand-logo{
+    height:34px;
+    width:auto;
+    display:block;
+    padding:6px 10px;
+    background:rgba(250,246,236,0.92);
+    border-radius:8px;
+  }
+  .brand-word{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:700;
+    font-size:19px;
+    letter-spacing:.03em;
+    color:#F4EFE0;
+  }
+  .brand-word .brand-dot{color:var(--teal-soft);}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:26px;height:1px;background:var(--gold-soft);display:inline-block;
+  }
+  h1.title{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(28px, 4.4vw, 52px);
+    line-height:1.05;
+    margin:0 0 14px;
+    max-width:16ch;
+  }
+  h1.title em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--gold-soft);
+  }
+  .hero-sub{
+    max-width:56ch;
+    color:#C9C3AE;
+    font-size:15.5px;
+    line-height:1.6;
+    margin-bottom:30px;
+  }
+  .clock-strip{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .clock-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid var(--line-dark);
+    border-radius:10px;
+    padding:14px 18px;
+    min-width:150px;
+    backdrop-filter:blur(6px);
+  }
+  .clock-card .label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:#9C9680;
+    margin-bottom:6px;
+  }
+  .clock-card .value{
+    font-family:'Fraunces', serif;
+    font-size:20px;
+    color:#F4EFE0;
+  }
+  .clock-card .value.accent{color:var(--gold-soft);}
+  .clock-card .value.accent-teal{color:var(--teal-soft);}
+
+  /* ---------- Controls ---------- */
+  .controls-wrap{
+    background:var(--paper);
+    padding:0 6vw;
+  }
+  .controls{
+    max-width:1200px;
+    margin:0 auto;
+    padding:26px 0 8px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:22px;
+    border-bottom:1px solid var(--line);
+  }
+  .branch-toggle{
+    display:flex;
+    gap:8px;
+    background:var(--paper-2);
+    padding:5px;
+    border-radius:999px;
+    border:1px solid var(--line);
+  }
+  .branch-toggle button{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:600;
+    font-size:13px;
+    border:none;
+    background:transparent;
+    padding:9px 18px;
+    border-radius:999px;
+    cursor:pointer;
+    color:var(--muted);
+    transition:.2s ease;
+    letter-spacing:.01em;
+  }
+  .branch-toggle button.active[data-branch="CSE 7TH"]{background:var(--gold); color:#2A1E05;}
+  .branch-toggle button.active[data-branch="AI & ML 7TH"]{background:var(--teal); color:#04211C;}
+
+  .group-toggle{
+    display:flex;
+    gap:6px;
+  }
+  .group-toggle button{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    font-weight:600;
+    width:40px;height:40px;
+    border-radius:8px;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--ink-text);
+    cursor:pointer;
+    transition:.15s ease;
+  }
+  .group-toggle button.active{
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
+  }
+  .group-toggle button:hover:not(.active){border-color:var(--gold);}
+
+  .legend-mini{
+    margin-left:auto;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    font-size:12.5px;
+    color:var(--muted);
+  }
+  .legend-mini .dot{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:6px;}
+
+  /* ---------- Timetable ---------- */
+  main{
+    background:var(--paper);
+    padding:34px 6vw 70px;
+  }
+  .table-shell{
+    max-width:1200px;
+    margin:0 auto;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 30px 60px -35px rgba(18,33,63,0.35);
+  }
+  .table-head-strip{
+    padding:20px 24px 16px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .table-head-strip h2{
+    font-family:'Fraunces', serif;
+    font-size:22px;
+    margin:0;
+    font-weight:600;
+  }
+  .table-head-strip .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.08em;
+    color:var(--muted);
+    text-transform:uppercase;
+  }
+
+  .grid-scroll{overflow-x:auto;}
+  table.tt{
+    border-collapse:collapse;
+    width:100%;
+    min-width:960px;
+  }
+  table.tt th, table.tt td{
+    border:1px solid var(--line);
+    padding:0;
+  }
+  table.tt thead th{
+    background:var(--paper-2);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    padding:12px 8px;
+    text-align:center;
+    position:sticky;
+    top:0;
+  }
+  table.tt thead th .p-num{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-size:16px;
+    color:var(--ink-text);
+    font-weight:600;
+    letter-spacing:0;
+    margin-bottom:2px;
+  }
+  table.tt thead th.day-col{
+    background:var(--ink);
+    color:var(--paper);
+    text-align:left;
+    padding-left:16px;
+    min-width:110px;
+  }
+  table.tt tbody td.day-cell{
+    background:var(--paper-2);
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:15px;
+    color:var(--ink-text);
+    padding:14px 16px;
+    white-space:nowrap;
+    vertical-align:middle;
+  }
+  table.tt tbody td.day-cell .d-sub{
+    display:block;
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:400;
+    font-size:10px;
+    color:var(--muted);
+    letter-spacing:.06em;
+    margin-top:2px;
+  }
+  table.tt tbody td.slot{
+    text-align:center;
+    vertical-align:middle;
+    padding:10px 8px;
+    font-size:12.5px;
+    line-height:1.35;
+    min-width:104px;
+    transition:.15s ease;
+  }
+  table.tt tbody td.slot.free{
+    background:var(--free);
+    color:#B4AD9A;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+  }
+  table.tt tbody td.slot.busy{
+    background:#FBF3DD;
+    color:#3B2E0C;
+    font-weight:500;
+  }
+  table.tt tbody td.slot.busy.branch-teal{
+    background:#E9F5F2;
+    color:#0E332C;
+  }
+  table.tt tbody td.slot.busy.mentor{
+    background:#F1E9F7;
+    color:#3A1F52;
+  }
+  table.tt tbody tr:hover td.slot.busy{filter:brightness(0.97);}
+  table.tt tbody td.slot.now-col{outline:2px solid var(--gold); outline-offset:-2px;}
+  table.tt tbody tr.today td.day-cell{background:var(--ink); color:var(--paper);}
+  table.tt tbody tr.today td.day-cell .d-sub{color:var(--gold-soft);}
+
+  /* ---------- Now & Next Dashboard ---------- */
+  .now-next-section{
+    background:var(--ink);
+    padding:0 6vw 36px;
+    position:relative;
+  }
+  .now-next-section::before{
+    content:'';
+    position:absolute;
+    top:0; left:0; right:0;
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(200,154,58,0.3), rgba(47,143,127,0.25), transparent);
+  }
+  .nn-header{
+    max-width:1200px;
+    margin:0 auto;
+    padding:28px 0 18px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .nn-live-dot{
+    width:9px; height:9px;
+    border-radius:50%;
+    background:#4ADE80;
+    box-shadow:0 0 8px rgba(74,222,128,0.6);
+    animation: nn-pulse 2s ease-in-out infinite;
+  }
+  @keyframes nn-pulse{
+    0%,100%{opacity:1; transform:scale(1);}
+    50%{opacity:.5; transform:scale(0.85);}
+  }
+  .nn-title{
+    font-family:'Fraunces', serif;
+    font-size:18px;
+    font-weight:600;
+    color:#F4EFE0;
+    margin:0;
+  }
+  .nn-subtitle{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:#9C9680;
+    letter-spacing:.06em;
+    margin-left:auto;
+  }
+  .nn-grid{
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+    gap:14px;
+  }
+  .nn-card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:14px;
+    padding:18px 20px;
+    backdrop-filter:blur(10px);
+    transition:border-color .2s ease, transform .2s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .nn-card:hover{
+    border-color:rgba(255,255,255,0.15);
+    transform:translateY(-2px);
+  }
+  .nn-card-group{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.08em;
+    color:var(--gold-soft);
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .nn-card-group .nn-badge{
+    background:rgba(200,154,58,0.15);
+    border:1px solid rgba(200,154,58,0.25);
+    border-radius:6px;
+    padding:3px 8px;
+    font-size:10px;
+    color:var(--gold-soft);
+  }
+  .nn-card.teal-accent .nn-card-group{color:var(--teal-soft);}
+  .nn-card.teal-accent .nn-card-group .nn-badge{
+    background:rgba(47,143,127,0.15);
+    border-color:rgba(47,143,127,0.25);
+    color:var(--teal-soft);
+  }
+  .nn-block{
+    margin-bottom:14px;
+  }
+  .nn-block:last-child{margin-bottom:0;}
+  .nn-block-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:9.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:#7A7462;
+    margin-bottom:5px;
+  }
+  .nn-block-value{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:14px;
+    font-weight:500;
+    color:#F4EFE0;
+    line-height:1.4;
+  }
+  .nn-block-value.free-text{
+    color:#7A7462;
+    font-style:italic;
+    font-weight:400;
+  }
+  .nn-time-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:6px;
+  }
+  .nn-countdown{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    font-weight:600;
+    color:var(--gold-soft);
+    white-space:nowrap;
+  }
+  .nn-card.teal-accent .nn-countdown{color:var(--teal-soft);}
+  .nn-progress-track{
+    flex:1;
+    height:4px;
+    border-radius:4px;
+    background:rgba(255,255,255,0.06);
+    overflow:hidden;
+  }
+  .nn-progress-fill{
+    height:100%;
+    border-radius:4px;
+    background:linear-gradient(90deg, var(--gold), var(--gold-soft));
+    transition:width 1s linear;
+  }
+  .nn-card.teal-accent .nn-progress-fill{
+    background:linear-gradient(90deg, var(--teal), var(--teal-soft));
+  }
+  .nn-offline{
+    text-align:center;
+    padding:30px 20px;
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .nn-offline-icon{
+    font-size:32px;
+    margin-bottom:10px;
+  }
+  .nn-offline-text{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:14px;
+    color:#7A7462;
+    line-height:1.5;
+  }
+  .nn-offline-text strong{
+    color:#C9C3AE;
+    font-weight:600;
+  }
+  .nn-next-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    color:#6B6355;
+    letter-spacing:.06em;
+  }
+
+  /* ---------- Legend / footer ---------- */
+  .legend-panel{
+    max-width:1200px;
+    margin:26px auto 0;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:18px;
+  }
+  @media (max-width:760px){.legend-panel{grid-template-columns:1fr;}}
+  .panel-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:20px 22px;
+  }
+  .panel-card h3{
+    font-family:'Fraunces', serif;
+    font-size:15.5px;
+    margin:0 0 12px;
+  }
+  .faculty-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(160px,1fr));
+    gap:8px 14px;
+    font-size:12.5px;
+  }
+  .faculty-grid div span.code{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    color:var(--ink-text);
+    margin-right:6px;
+  }
+  .faculty-grid div{color:var(--muted);}
+  .course-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(190px,1fr));
+    gap:8px 14px;
+    font-size:12.5px;
+  }
+  .course-grid div span.code{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    color:var(--ink-text);
+    margin-right:6px;
+  }
+  .course-grid div{color:var(--muted);}
+
+  footer{
+    text-align:center;
+    padding:26px 6vw 40px;
+    background:var(--paper);
+    color:var(--muted);
+    font-size:11.5px;
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:.04em;
+  }
+  .footer-divider{margin:0 10px; color:var(--line);}
+  .footer-dev{
+    color:var(--ink-text);
+    font-weight:600;
+    letter-spacing:.02em;
+  }
+
+  @media (max-width:640px){
+    header.hero{padding:40px 5vw 32px;}
+    .controls-wrap, main, .legend-panel{padding-left:5vw;padding-right:5vw;}
+    .controls{gap:14px;}
+    .legend-mini{margin-left:0;}
+    .nn-grid{grid-template-columns:1fr;}
+    .now-next-section{padding-left:5vw; padding-right:5vw;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <a href="https://woxora.com" target="_blank" rel="noopener" class="brand-block" aria-label="Visit Woxora">
+    <img src="https://pub-55517176dab74910835fd4e839154e4e.r2.dev/woxora-ebook-images/woxora_logo_v1_e4lpaj.png" alt="Woxora logo" class="brand-logo">
+    <span class="brand-word">WOXORA<span class="brand-dot">.</span></span>
+  </a>
+  <div class="eyebrow">GZSCCET Bathinda · Dept. of Computer Science &amp; Engineering</div>
+  <h1 class="title">Seventh Semester,<br><em>lecture by lecture.</em></h1>
+  <p class="hero-sub">The August–December '26 schedule for CSE and AI&nbsp;&amp;&nbsp;ML — sectioned by group, Monday through Friday. Nine periods a day, nothing outside the working week.</p>
+  <div class="clock-strip">
+    <div class="clock-card">
+      <div class="label">Today</div>
+      <div class="value" id="clockDay">—</div>
+    </div>
+    <div class="clock-card">
+      <div class="label">Local time</div>
+      <div class="value mono" id="clockTime">—</div>
+    </div>
+    <div class="clock-card">
+      <div class="label">Status</div>
+      <div class="value accent" id="clockStatus">—</div>
+    </div>
+  </div>
+</header>
+
+<section class="now-next-section" id="nowNextSection">
+  <div class="nn-header">
+    <div class="nn-live-dot"></div>
+    <h2 class="nn-title">Now &amp; Next</h2>
+    <span class="nn-subtitle" id="nnTimestamp"></span>
+  </div>
+  <div id="nnContainer"></div>
+</section>
+
+<div class="controls-wrap">
+  <div class="controls">
+    <div class="branch-toggle" id="branchToggle">
+      <button data-branch="CSE 7TH" class="active">B.Tech CSE</button>
+      <button data-branch="AI & ML 7TH">B.Tech AI &amp; ML</button>
+    </div>
+    <div class="group-toggle" id="groupToggle"></div>
+    <div class="legend-mini">
+      <span><span class="dot" style="background:#FBF3DD;border:1px solid #E3D28F"></span>Lecture</span>
+      <span><span class="dot" style="background:#F1E9F7;border:1px solid #D6BFE6"></span>Mentor-mentee</span>
+      <span><span class="dot" style="background:var(--free);border:1px solid #DCD5C2"></span>Free</span>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="table-shell">
+    <div class="table-head-strip">
+      <h2 id="tableTitle">B.Tech CSE 7th — Group G1</h2>
+      <span class="tag">9 periods · 09:00 – 05:15</span>
+    </div>
+    <div class="grid-scroll">
+      <table class="tt">
+        <thead>
+          <tr>
+            <th class="day-col">Day</th>
+            <!-- periods injected by JS -->
+          </tr>
+        </thead>
+        <tbody id="ttBody">
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="legend-panel">
+    <div class="panel-card">
+      <h3>Faculty key</h3>
+      <div class="faculty-grid" id="facultyGrid"></div>
+    </div>
+    <div class="panel-card">
+      <h3>Course codes</h3>
+      <div class="course-grid" id="courseGrid"></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  SOURCE: FINAL_STUDENT_TIME_TABLE_JULY–DEC_26.XLSX · 7TH SEM EXTRACT · L = LECTURE, T = TUTORIAL
+  <span class="footer-divider">·</span>
+  Developed by <span class="footer-dev">Nishan Singh</span>
+</footer>
+
+<script>
+const PERIOD_TIMES = ["09:00","09:55","10:50","11:45","12:40","01:35","02:30","03:25","04:20"];
+const DAYS = ["MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY"];
+const DAY_LABEL = {MONDAY:"Mon",TUESDAY:"Tue",WEDNESDAY:"Wed",THURSDAY:"Thu",FRIDAY:"Fri"};
+
+const DATA = {
+"CSE 7TH|G1|MONDAY": ["COI (L) NC B-209","AI (L) PS CL-4","MENTOR-MENTEE(L)","SC(L) RAVNEET B209","—","—","HCI (L) UF B209","CM (L) L-4","—"],
+"CSE 7TH|G1|TUESDAY": ["HCI (L) UF B-209","CMC (L) B-209","CRYPTO (L) VN S-2","—","EVS (L) S-1","—","—","—","—"],
+"CSE 7TH|G1|WEDNESDAY": ["SC(L) RAVNEET, L-2","AI (L) PS L-2","—","—","CMC (L) B-209","—","—","—","—"],
+"CSE 7TH|G1|THURSDAY": ["EVS(L) LM3","CRYPTO(L) VN, CL-2","HCI(L) UF, L-2","—","CMC(L) B209","—","CM(L) L-4","—","—"],
+"CSE 7TH|G1|FRIDAY": ["COI(L) NC, B209","AI(L) PS, L-2","—","SC (L) RAVNEET L-3","CM(L) L-3","—","—","—","—"],
+"CSE 7TH|G2|MONDAY": ["COI (L) NC B-209","AI (L) PS CL-4","MENTOR-MENTEE(L)","SC(L) RAVNEET B209","—","—","HCI (L) UF B209","CM (L) L-4","—"],
+"CSE 7TH|G2|TUESDAY": ["HCI (L) UF B-209","CMC (L) B-209","CRYPTO (L) VN S-2","—","EVS (L) S-1","—","—","—","—"],
+"CSE 7TH|G2|WEDNESDAY": ["SC(L) RAVNEET, L-2","AI (L) PS L-2","—","—","CMC (L) B-209","—","—","—","—"],
+"CSE 7TH|G2|THURSDAY": ["EVS(L) LM3","CRYPTO(L) VN, CL-2","HCI(L) UF, L-2","—","CMC(L) B209","—","CM(L) L-4","—","—"],
+"CSE 7TH|G2|FRIDAY": ["COI(L) NC, B209","AI(L) PS, L-2","—","SC (L) RAVNEET L-3","CM(L) L-3","—","—","—","—"],
+"CSE 7TH|G3|MONDAY": ["—","CRYPTO (L) VN S-2","AI(L) KR, CL-5","SC(L) RAVNEET B209","COI (L) HK L-3","—","—","CM (L) L-4","—"],
+"CSE 7TH|G3|TUESDAY": ["—","CMC (L) S-2","CRYPTO (L) VN S-2","HCI (L) UF S1","—","—","—","—","—"],
+"CSE 7TH|G3|WEDNESDAY": ["SC(L) RAVNEET, L-2","—","COI (L) HK S-2","AI (L) KR L-2","CMC (L) L-2","—","—","—","—"],
+"CSE 7TH|G3|THURSDAY": ["—","AI(L) KR, L-3","EVS(L) L-4","HCI(L) UF, B209","CMC(L) B209","—","CM(L) L-4","—","—"],
+"CSE 7TH|G3|FRIDAY": ["—","—","HCI(L) L-1","SC (L) RAVNEET L-3","CM(L) L-3","—","EVS(L) L-3","—","—"],
+"CSE 7TH|G4|MONDAY": ["—","CRYPTO (L) VN S-2","AI(L) KR, CL-5","SC(L) RAVNEET B209","COI (L) HK L-3","—","—","CM (L) L-4","—"],
+"CSE 7TH|G4|TUESDAY": ["—","CMC (L) S-2","CRYPTO (L) VN S-2","HCI (L) UF S1","—","—","—","—","—"],
+"CSE 7TH|G4|WEDNESDAY": ["SC(L) RAVNEET, L-2","—","COI (L) HK S-2","AI (L) KR L-2","CMC (L) L-2","—","—","—","—"],
+"CSE 7TH|G4|THURSDAY": ["—","AI(L) KR, L-3","EVS(L) L-4","HCI(L) UF, B209","CMC(L) B209","—","CM(L) L-4","—","—"],
+"CSE 7TH|G4|FRIDAY": ["—","—","HCI(L) L-1","SC (L) RAVNEET L-3","CM(L) L-3","—","EVS(L) L-3","—","—"],
+"AI & ML 7TH|G1|MONDAY": ["COI(L) DA S2","CRYPTO (L) VN S-2","—","SC(L) RAVNEET B209","AML (L) L-2 RAVNEET","—","EVS (L) LA-2","CM (L) L-4","—"],
+"AI & ML 7TH|G1|TUESDAY": ["IP (L) RAMAN LM-3","CMC (L) S-2","CRYPTO (L) VN S-2","—","MENTOR-MENTEE(L)","—","EVS (L) LA-2","—","—"],
+"AI & ML 7TH|G1|WEDNESDAY": ["SC(L) RAVNEET, L-2","—","IP (L) RAMAN CL-7","AML (L) RK LM-3","CMC (L) L-2","—","—","—","—"],
+"AI & ML 7TH|G1|THURSDAY": ["—","COI(L) S1, DA","—","—","—","—","CM(L) L-4","CMC(L) L2","—"],
+"AI & ML 7TH|G1|FRIDAY": ["COI(L) DA, S2","IP(L) RAMAN, S2","AML(L) RAVNEET, LA2","SC (L) RAVNEET L-3","CM(L) L-3","—","—","—","—"],
+"AI & ML 7TH|G2|MONDAY": ["COI(L) DA S2","CRYPTO (L) VN S-2","—","SC(L) RAVNEET B209","AML (L) L-2 RAVNEET","—","EVS (L) LA-2","CM (L) L-4","—"],
+"AI & ML 7TH|G2|TUESDAY": ["IP (L) RAMAN LM-3","CMC (L) S-2","CRYPTO (L) VN S-2","—","MENTOR-MENTEE(L)","—","EVS (L) LA-2","—","—"],
+"AI & ML 7TH|G2|WEDNESDAY": ["SC(L) RAVNEET, L-2","—","IP (L) RAMAN CL-7","AML (L) RK LM-3","CMC (L) L-2","—","—","—","—"],
+"AI & ML 7TH|G2|THURSDAY": ["—","COI(L) S1, DA","—","—","—","—","CM(L) L-4","CMC(L) L2","—"],
+"AI & ML 7TH|G2|FRIDAY": ["COI(L) DA, S2","IP(L) RAMAN, S2","AML(L) RAVNEET, LA2","SC (L) RAVNEET L-3","CM(L) L-3","—","—","—","—"]
+};
+
+const GROUPS = {
+  "CSE 7TH": ["G1","G2","G3","G4"],
+  "AI & ML 7TH": ["G1","G2"]
+};
+const BRANCH_LABEL = {"CSE 7TH":"B.Tech CSE 7th","AI & ML 7TH":"B.Tech AI & ML 7th"};
+
+const FACULTY = {
+  "NC":"Nancy","PS":"Paramjeet Singh","RAVNEET":"Ravneet Kaur","UF":"Ulfat","VN":"Vandana",
+  "HK":"Himanshu Kumar","KR":"Kashish Rathi","DA":"Dishti Aggarwal","RK":"Raman Kaur","RAMAN":"Raman Kaur"
+};
+const COURSES = {
+  "COI":"Cryptography & Optimization / Internet — see course list",
+  "AI":"Artificial Intelligence",
+  "SC":"Soft Computing",
+  "HCI":"Human-Computer Interaction",
+  "CM":"Construction Management",
+  "CMC":"Cellular Mobile Communication",
+  "CRYPTO":"Cryptography",
+  "EVS":"Environmental Studies",
+  "AML":"Applied Machine Learning",
+  "IP":"Image Processing"
+};
+
+let state = {branch:"CSE 7TH", group:"G1"};
+
+function buildHeaderPeriods(){
+  const thead = document.querySelector('table.tt thead tr');
+  PERIOD_TIMES.forEach((t,i)=>{
+    const th = document.createElement('th');
+    th.innerHTML = `<span class="p-num">P${i+1}</span>${t}`;
+    thead.appendChild(th);
+  });
+}
+
+function isBusyMentor(v){ return v.toUpperCase().includes('MENTOR'); }
+
+function renderTable(){
+  const tbody = document.getElementById('ttBody');
+  tbody.innerHTML = '';
+  const now = new Date();
+  const todayName = DAYS[ (now.getDay()+6)%7 ] || null; // Mon=0
+  const jsDay = now.getDay(); // 0 Sun ... 6 Sat
+  const todayKey = ["SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"][jsDay];
+
+  DAYS.forEach(day=>{
+    const tr = document.createElement('tr');
+    if(day === todayKey) tr.classList.add('today');
+    const dayCell = document.createElement('td');
+    dayCell.className = 'day-cell';
+    dayCell.innerHTML = `${DAY_LABEL[day]}<span class="d-sub">${day.slice(0,3)}</span>`;
+    tr.appendChild(dayCell);
+
+    const vals = DATA[`${state.branch}|${state.group}|${day}`] || Array(9).fill('—');
+    vals.forEach((v,i)=>{
+      const td = document.createElement('td');
+      const free = (v === '—');
+      td.className = 'slot ' + (free ? 'free' : 'busy');
+      if(!free && state.branch === 'AI & ML 7TH') td.classList.add('branch-teal');
+      if(!free && isBusyMentor(v)) td.classList.add('mentor');
+      td.textContent = free ? '— free —' : v;
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+
+  document.getElementById('tableTitle').textContent = `${BRANCH_LABEL[state.branch]} — Group ${state.group}`;
+}
+
+function buildGroupToggle(){
+  const wrap = document.getElementById('groupToggle');
+  wrap.innerHTML = '';
+  GROUPS[state.branch].forEach(g=>{
+    const btn = document.createElement('button');
+    btn.textContent = g;
+    if(g === state.group) btn.classList.add('active');
+    btn.addEventListener('click', ()=>{
+      state.group = g;
+      buildGroupToggle();
+      renderTable();
+      renderNowNext();
+    });
+    wrap.appendChild(btn);
+  });
+}
+
+document.querySelectorAll('#branchToggle button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('#branchToggle button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    state.branch = btn.dataset.branch;
+    state.group = GROUPS[state.branch][0];
+    buildGroupToggle();
+    renderTable();
+    renderNowNext();
+  });
+});
+
+function buildLegend(){
+  const fGrid = document.getElementById('facultyGrid');
+  Object.entries(FACULTY).forEach(([code,name])=>{
+    const d = document.createElement('div');
+    d.innerHTML = `<span class="code">${code}</span>${name}`;
+    fGrid.appendChild(d);
+  });
+  const cGrid = document.getElementById('courseGrid');
+  Object.entries(COURSES).forEach(([code,name])=>{
+    const d = document.createElement('div');
+    d.innerHTML = `<span class="code">${code}</span>${name}`;
+    cGrid.appendChild(d);
+  });
+}
+
+function tickClock(){
+  const now = new Date();
+  const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  document.getElementById('clockDay').textContent = dayNames[now.getDay()];
+  document.getElementById('clockTime').textContent = now.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+  const isWeekday = now.getDay() >=1 && now.getDay() <=5;
+  const hh = now.getHours() + now.getMinutes()/60;
+  const inCollegeHours = hh >= 9 && hh < 17.25;
+  const statusEl = document.getElementById('clockStatus');
+  if(isWeekday && inCollegeHours){
+    statusEl.textContent = 'Classes in session';
+    statusEl.className = 'value accent';
+  } else if(isWeekday){
+    statusEl.textContent = 'Outside class hours';
+    statusEl.className = 'value accent-teal';
+  } else {
+    statusEl.textContent = 'Weekend — no classes';
+    statusEl.className = 'value accent-teal';
+  }
+}
+
+/* ============ Now & Next Logic ============ */
+const PERIOD_END_TIMES = ["09:55","10:50","11:45","12:40","01:35","02:30","03:25","04:20","05:15"];
+const PERIOD_STARTS_24 = [9*60, 9*60+55, 10*60+50, 11*60+45, 12*60+40, 13*60+35, 14*60+30, 15*60+25, 16*60+20];
+const PERIOD_ENDS_24   = [9*60+55, 10*60+50, 11*60+45, 12*60+40, 13*60+35, 14*60+30, 15*60+25, 16*60+20, 17*60+15];
+
+function parseTime12(t){
+  // Accepts "09:00", "01:35" etc — convert to 24h minutes using PERIOD_STARTS_24 array
+  const idx = PERIOD_TIMES.indexOf(t);
+  if(idx !== -1) return PERIOD_STARTS_24[idx];
+  return -1;
+}
+
+function formatMinutes(totalMin){
+  const h = Math.floor(totalMin / 60);
+  const m = totalMin % 60;
+  if(h > 0) return `${h}h ${m}m`;
+  return `${m}m`;
+}
+
+function getCurrentPeriodIndex(nowMin){
+  for(let i = 0; i < 9; i++){
+    if(nowMin >= PERIOD_STARTS_24[i] && nowMin < PERIOD_ENDS_24[i]) return i;
+  }
+  return -1;
+}
+
+function getNextLectureInfo(slots, fromIndex){
+  for(let i = fromIndex; i < 9; i++){
+    if(slots[i] && slots[i] !== '—'){
+      return { period: i, text: slots[i], time: PERIOD_TIMES[i] };
+    }
+  }
+  return null;
+}
+
+function renderNowNext(){
+  const container = document.getElementById('nnContainer');
+  const tsEl = document.getElementById('nnTimestamp');
+  const now = new Date();
+  const jsDay = now.getDay();
+  const todayKey = ["SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"][jsDay];
+  const isWeekday = jsDay >= 1 && jsDay <= 5;
+  const nowMin = now.getHours() * 60 + now.getMinutes();
+  const nowSec = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+
+  tsEl.textContent = now.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+
+  if(!isWeekday){
+    container.innerHTML = `
+      <div class="nn-offline">
+        <div class="nn-offline-icon">🌤️</div>
+        <div class="nn-offline-text"><strong>It's the weekend!</strong><br>No lectures today. Enjoy your time off — classes resume on Monday.</div>
+      </div>`;
+    return;
+  }
+
+  const FIRST_START = PERIOD_STARTS_24[0]; // 9:00 = 540
+  const LAST_END = PERIOD_ENDS_24[8]; // 17:15 = 1035
+
+  if(nowMin >= LAST_END){
+    container.innerHTML = `
+      <div class="nn-offline">
+        <div class="nn-offline-icon">🌙</div>
+        <div class="nn-offline-text"><strong>Classes are over for today.</strong><br>See you tomorrow!</div>
+      </div>`;
+    return;
+  }
+
+  if(nowMin < FIRST_START){
+    // Before classes start — show what's first for each group
+    const minsUntil = FIRST_START - nowMin;
+    let html = '<div class="nn-grid">';
+    const branch = state.branch;
+    const groups = GROUPS[branch];
+    const isTeal = branch === 'AI & ML 7TH';
+
+    groups.forEach(g => {
+      const slots = DATA[`${branch}|${g}|${todayKey}`] || Array(9).fill('—');
+      const firstLecture = getNextLectureInfo(slots, 0);
+      html += `
+        <div class="nn-card${isTeal ? ' teal-accent' : ''}">
+          <div class="nn-card-group">${g} <span class="nn-badge">STARTS IN ${formatMinutes(minsUntil)}</span></div>
+          <div class="nn-block">
+            <div class="nn-block-label">FIRST LECTURE</div>
+            <div class="nn-block-value${firstLecture ? '' : ' free-text'}">
+              ${firstLecture ? `P${firstLecture.period+1} · ${firstLecture.text}` : 'No lectures today'}
+            </div>
+          </div>
+        </div>`;
+    });
+    html += '</div>';
+    container.innerHTML = html;
+    return;
+  }
+
+  // During class hours
+  const currentPIdx = getCurrentPeriodIndex(nowMin);
+  let html = '<div class="nn-grid">';
+  const branch = state.branch;
+  const groups = GROUPS[branch];
+  const isTeal = branch === 'AI & ML 7TH';
+
+  groups.forEach(g => {
+    const slots = DATA[`${branch}|${g}|${todayKey}`] || Array(9).fill('—');
+
+    let currentText = null;
+    let remainSec = 0;
+    let progressPct = 0;
+    let periodLabel = '';
+
+    if(currentPIdx !== -1){
+      const slotVal = slots[currentPIdx];
+      const periodStartSec = PERIOD_STARTS_24[currentPIdx] * 60;
+      const periodEndSec = PERIOD_ENDS_24[currentPIdx] * 60;
+      const totalDur = periodEndSec - periodStartSec;
+      const elapsed = nowSec - periodStartSec;
+      remainSec = periodEndSec - nowSec;
+      progressPct = Math.min(100, Math.max(0, (elapsed / totalDur) * 100));
+      periodLabel = `P${currentPIdx + 1}`;
+
+      if(slotVal && slotVal !== '—'){
+        currentText = slotVal;
+      }
+    } else {
+      // Between periods (break / gap)
+      // Find next period
+      for(let i = 0; i < 9; i++){
+        if(nowMin < PERIOD_STARTS_24[i]){
+          remainSec = (PERIOD_STARTS_24[i] * 60) - nowSec;
+          break;
+        }
+      }
+    }
+
+    // Find next lecture
+    const nextLecture = getNextLectureInfo(slots, currentPIdx !== -1 ? currentPIdx + 1 : 0);
+
+    const remainMin = Math.ceil(remainSec / 60);
+    const remainDisplay = remainSec > 0 ? formatMinutes(remainMin) : '0m';
+
+    html += `
+      <div class="nn-card${isTeal ? ' teal-accent' : ''}">
+        <div class="nn-card-group">${g} <span class="nn-badge">${periodLabel || 'BREAK'}</span></div>
+        <div class="nn-block">
+          <div class="nn-block-label">NOW</div>
+          <div class="nn-block-value${currentText ? '' : ' free-text'}">
+            ${currentText ? currentText : (currentPIdx !== -1 ? '— Free period —' : '— Break —')}
+          </div>
+          ${currentPIdx !== -1 ? `
+          <div class="nn-time-row">
+            <span class="nn-countdown">${remainDisplay} left</span>
+            <div class="nn-progress-track">
+              <div class="nn-progress-fill" style="width:${progressPct.toFixed(1)}%"></div>
+            </div>
+          </div>` : `
+          <div class="nn-time-row">
+            <span class="nn-countdown">Next in ${remainDisplay}</span>
+          </div>`}
+        </div>
+        <div class="nn-block">
+          <div class="nn-block-label">NEXT</div>
+          <div class="nn-block-value${nextLecture ? '' : ' free-text'}">
+            ${nextLecture ? `P${nextLecture.period+1} @ ${nextLecture.time} · ${nextLecture.text}` : 'No more lectures today'}
+          </div>
+        </div>
+      </div>`;
+  });
+
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+buildHeaderPeriods();
+buildGroupToggle();
+renderTable();
+buildLegend();
+tickClock();
+renderNowNext();
+setInterval(tickClock, 30000);
+setInterval(renderNowNext, 1000);
+</script>
+
+</body>
+</html>
